@@ -24,7 +24,8 @@ public class City implements Serializable {
 	private String cityName;
 
 	//bi-directional one-to-one association to Province
-	@OneToOne(mappedBy="city")
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="PROVINCE_ID", referencedColumnName="PROVINCE_ID")
 	private Province province;
 
 	public City() {

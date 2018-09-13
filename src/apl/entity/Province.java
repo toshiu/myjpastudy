@@ -22,10 +22,8 @@ public class Province implements Serializable {
 
 	@Column(name="PROVINCE_NAME")
 	private String provinceName;
-
-	//bi-directional one-to-one association to City
-	@OneToOne
-	@JoinColumn(name="PROVINCE_ID", referencedColumnName="PROVINCE_ID")
+	
+	@OneToOne(mappedBy="province", cascade=CascadeType.ALL)
 	private City city;
 
 	public Province() {
@@ -53,14 +51,6 @@ public class Province implements Serializable {
 
 	public void setProvinceName(String provinceName) {
 		this.provinceName = provinceName;
-	}
-
-	public City getCity() {
-		return this.city;
-	}
-
-	public void setCity(City city) {
-		this.city = city;
 	}
 
 }
